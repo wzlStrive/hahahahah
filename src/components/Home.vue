@@ -4,7 +4,7 @@
     <el-header>
       <div class="home-box">
         <img src="../assets/heima.png" alt />
-        <span>黑马电商管理系统</span>
+        <span>电商管理系统</span>
       </div>
       <el-button type="primary" @click="logout">退出</el-button>
     </el-header>
