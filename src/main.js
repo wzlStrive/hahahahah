@@ -8,6 +8,7 @@ import './assets/css/global.css'
 import axios from 'axios'
 import Router from 'vue-router'
 import TreeTable from 'vue-table-with-tree-grid'
+import 'default-passive-events'
 // 配置请求的根路径
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
 // axios请求拦截器
