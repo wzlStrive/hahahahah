@@ -11,7 +11,10 @@
     "core-js": "^2.6.5",
     "default-passive-events": "^1.0.10",
     "element-ui": "^2.4.5",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
     "vue": "^2.6.10",
+    "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.0.3",
     "vue-table-with-tree-grid": "^0.2.4"
   },
