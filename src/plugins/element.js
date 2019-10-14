@@ -1,6 +1,8 @@
 // 按需导入文件
 import Vue from 'vue'
 import { Button, Dialog, Form, FormItem, Input, Message, Container, Header, Aside, Main, Menu, Submenu, MenuItem, Breadcrumb, BreadcrumbItem, Card, Row, Col, Table, TableColumn, Switch, Tooltip, Pagination, MessageBox, Tag, Tree, Select, Option, Cascader, Alert, Tabs, TabPane, Steps, Step, Checkbox, CheckboxGroup, Upload } from 'element-ui'
+import Timeline from './timeline/index.js'
+import timelineItem from './timeline-item/index.js'
 
 Vue.use(Button)
 Vue.use(Form)
@@ -37,5 +39,7 @@ Vue.use(Step)
 Vue.use(Checkbox)
 Vue.use(CheckboxGroup)
 Vue.use(Upload)
+Vue.use(Timeline)
+Vue.use(timelineItem)
 Vue.prototype.$msg = Message
 Vue.prototype.$confirm = MessageBox.confirm
