@@ -208,9 +208,7 @@ export default {
       },
       // 添加表单的验证规则对象
       addFormRules: {
-        attr_name: [
-          { required: true, message: '请输入参数名称', trigger: 'blur' }
-        ]
+        attr_name: [{ required: true, message: '请输入参数名称', trigger: 'blur' }]
       },
       // 控制修改对话框的显示与隐藏
       editDialogVisible: false,
@@ -218,9 +216,7 @@ export default {
       editForm: {},
       // 修改表单的验证规则对象
       editFormRules: {
-        attr_name: [
-          { required: true, message: '请输入参数名称', trigger: 'blur' }
-        ]
+        attr_name: [{ required: true, message: '请输入参数名称', trigger: 'blur' }]
       }
     }
   },
@@ -257,12 +253,9 @@ export default {
       //   证明选中的是三级分类
       // console.log(this.selectedCateKeys)
       // 根据所选分类的id 和当前所处的面板  获取对应的参数
-      const { data: res } = await this.$http.get(
-        `categories/${this.cateId}/attributes`,
-        {
-          params: { sel: this.activeName }
-        }
-      )
+      const { data: res } = await this.$http.get(`categories/${this.cateId}/attributes`, {
+        params: { sel: this.activeName }
+      })
       if (res.meta.status !== 200) {
         return this.$msg.error('获取参数列表失败')
       }
@@ -289,13 +282,10 @@ export default {
     addParams() {
       this.$refs.addFormRef.validate(async valid => {
         if (!valid) return
-        const { data: res } = await this.$http.post(
-          `categories/${this.cateId}/attributes`,
-          {
-            attr_name: this.addForm.attr_name,
-            attr_sel: this.activeName
-          }
-        )
+        const { data: res } = await this.$http.post(`categories/${this.cateId}/attributes`, {
+          attr_name: this.addForm.attr_name,
+          attr_sel: this.activeName
+        })
         if (res.meta.status !== 201) {
           return this.$msg.error('添加参数失败')
         }
@@ -308,12 +298,9 @@ export default {
     async showEditDialog(attr_id) {
       // console.log(attr_id)
       // 查询当前信息的参数
-      const { data: res } = await this.$http.get(
-        `categories/${this.cateId}/attributes/${attr_id}`,
-        {
-          params: { attr_sel: this.activeName }
-        }
-      )
+      const { data: res } = await this.$http.get(`categories/${this.cateId}/attributes/${attr_id}`, {
+        params: { attr_sel: this.activeName }
+      })
       // console.log(res.data)
       if (res.meta.status !== 200) {
         return this.$msg.error('获取参数信息失败')
@@ -329,10 +316,7 @@ export default {
     editParams() {
       this.$refs.editFormRef.validate(async valid => {
         if (!valid) return
-        const { data: res } = await this.$http.put(
-          `categories/${this.cateId}/attributes/${this.editForm.attr_id}`,
-          { attr_name: this.editForm.attr_name, attr_sel: this.activeName }
-        )
+        const { data: res } = await this.$http.put(`categories/${this.cateId}/attributes/${this.editForm.attr_id}`, { attr_name: this.editForm.attr_name, attr_sel: this.activeName })
 
         if (res.meta.status !== 200) {
           return this.$msg.error('修改参数失败！')
@@ -345,24 +329,18 @@ export default {
     },
     // 根据id删除对应的参数项
     async removeParams(attr_id) {
-      const confirmResult = await this.$confirm(
-        '此操作将永久删除该参数, 是否继续?',
-        '提示',
-        {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }
-      ).catch(err => err)
+      const confirmResult = await this.$confirm('此操作将永久删除该参数, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).catch(err => err)
 
       // 用户取消了删除操作
       if (confirmResult !== 'confirm') {
         return this.$msg.info('已取消删除')
       }
       // 删除的业务逻辑
-      const { data: res } = await this.$http.delete(
-        `categories/${this.cateId}/attributes/${attr_id}`
-      )
+      const { data: res } = await this.$http.delete(`categories/${this.cateId}/attributes/${attr_id}`)
       if (res.meta.status !== 200) {
         return this.$msg.error('删除失败')
       }
@@ -385,14 +363,11 @@ export default {
     },
     // 将对 attr_vals 的操作，保存到数据库
     async saveAttrValus(row) {
-      const { data: res } = await this.$http.put(
-        `categories/${this.cateId}/attributes/${row.attr_id}`,
-        {
-          attr_name: row.attr_name,
-          attr_sel: row.attr_sel,
-          attr_vals: row.attr_vals.join(' ')
-        }
-      )
+      const { data: res } = await this.$http.put(`categories/${this.cateId}/attributes/${row.attr_id}`, {
+        attr_name: row.attr_name,
+        attr_sel: row.attr_sel,
+        attr_vals: row.attr_vals.join(' ')
+      })
       if (res.meta.status !== 200) {
         return this.$msg.error('修改参数项失败')
       }

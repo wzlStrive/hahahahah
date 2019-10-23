@@ -66,10 +66,10 @@ export default {
     }
 
     // 4. 准备配置和数据项
-    const res = _.merge(res.data, this.options)
+    const i = _.merge(res.data, this.options)
 
     // 展示数据
-    myChart.setOption(res)
+    myChart.setOption(i)
   },
   methods: {}
 }

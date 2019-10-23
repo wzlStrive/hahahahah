@@ -37,7 +37,7 @@
           >{{$moment(scope.row.create_time).format('YYYY-MM-DD hh:mm:ss')}}</template>
         </el-table-column>
         <el-table-column label="操作" width="150px">
-          <template slot-scope="scope">
+          <template>
             <!-- 修改按钮 -->
             <el-button type="primary" icon="el-icon-edit" size="small" @click="showBox"></el-button>
             <el-button type="success" icon="el-icon-location" size="small" @click="showProgressBox"></el-button>
@@ -114,12 +114,8 @@ export default {
         address2: ''
       },
       addressFormRules: {
-        address1: [
-          { required: true, message: '请选择省市区县', trigger: 'blur' }
-        ],
-        address2: [
-          { required: true, message: '请填写详细地址', trigger: 'blur' }
-        ]
+        address1: [{ required: true, message: '请选择省市区县', trigger: 'blur' }],
+        address2: [{ required: true, message: '请填写详细地址', trigger: 'blur' }]
       },
       catyData,
       progressVisible: false,

@@ -43,7 +43,7 @@
           <el-tag type="warning" v-else size="mini">三级</el-tag>
         </template>
         <!-- 操作模板 -->
-        <template slot="operation" slot-scope="scope">
+        <template slot="operation">
           <el-button type="primary" icon="el-icon-edit" size="mini">编辑</el-button>
           <el-button type="danger" icon="el-icon-delete" size="mini">删除</el-button>
         </template>
@@ -151,9 +151,7 @@ export default {
       },
       // 添加分类的验证规则对象
       addCateFormRules: {
-        cat_name: [
-          { required: true, message: '请输入分类名称', trigger: 'blur' }
-        ]
+        cat_name: [{ required: true, message: '请输入分类名称', trigger: 'blur' }]
       },
       //   父级分类的列表
       parentCateList: [],
@@ -219,12 +217,9 @@ export default {
       // 反之就说明没有选中任何父级分类
       if (this.selectedKeys.length > 0) {
         // 父级分类的id
-        this.addCateForm.cat_pid = this.selectedKeys[
-          this.selectedKeys.length - 1
-        ]
+        this.addCateForm.cat_pid = this.selectedKeys[this.selectedKeys.length - 1]
         // 为当前分类的等级赋值
         this.addCateForm.cat_level = this.selectedKeys.length
-        return
       } else {
         // 父级分类的id
         this.addCateForm.cat_pid = 0
@@ -239,10 +234,7 @@ export default {
       this.$refs.addCateFormRef.validate(async valid => {
         if (!valid) return
 
-        const { data: res } = await this.$http.post(
-          'categories',
-          this.addCateForm
-        )
+        const { data: res } = await this.$http.post('categories', this.addCateForm)
         console.log(res)
 
         if (res.meta.status !== 201) {

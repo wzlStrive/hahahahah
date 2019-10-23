@@ -43,15 +43,9 @@ export default {
       //   表单验证规则对象
       LoginFormRules: {
         //   验证用户名
-        username: [
-          { required: true, message: '请输入登录名称', trigger: 'blur' },
-          { min: 3, max: 6, message: '长度在 3 到 6 个字符', trigger: 'blur' }
-        ],
+        username: [{ required: true, message: '请输入登录名称', trigger: 'blur' }, { min: 3, max: 6, message: '长度在 3 到 6 个字符', trigger: 'blur' }],
         //   验证密码
-        password: [
-          { required: true, message: '请输入密码', trigger: 'blur' },
-          { min: 3, max: 10, message: '长度在 3 到 6 个字符', trigger: 'blur' }
-        ]
+        password: [{ required: true, message: '请输入密码', trigger: 'blur' }, { min: 3, max: 10, message: '长度在 3 到 6 个字符', trigger: 'blur' }]
       }
     }
   },
@@ -68,8 +62,7 @@ export default {
         // 从对象身上把data结构赋值出来 在重命名
         const { data: res } = await this.$http.post('login', this.LoginForm)
         // console.log(res)
-        if (res.meta.status !== 200) return this.$msg.error('登录失败')
-        this.$msg({ message: '登录成功', type: 'success' })
+        if (res.meta.status !== 200) return this.$msg.error('登录失败！')
         // 将登陆成功之后token保存到sessionStorage中
         window.sessionStorage.setItem('token', res.data.token)
         // 通过编程式导航跳转到后台主页

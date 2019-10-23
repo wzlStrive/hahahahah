@@ -119,21 +119,11 @@ export default {
         attrs: []
       },
       addFormrules: {
-        goods_name: [
-          { required: true, message: '请输入商品名称', trigger: 'blur' }
-        ],
-        goods_price: [
-          { required: true, message: '请输入商品价格', trigger: 'blur' }
-        ],
-        goods_weight: [
-          { required: true, message: '请输入商品重量', trigger: 'blur' }
-        ],
-        goods_number: [
-          { required: true, message: '请输入商品数量', trigger: 'blur' }
-        ],
-        goods_cat: [
-          { required: true, message: '请选择商品分类', trigger: 'blur' }
-        ]
+        goods_name: [{ required: true, message: '请输入商品名称', trigger: 'blur' }],
+        goods_price: [{ required: true, message: '请输入商品价格', trigger: 'blur' }],
+        goods_weight: [{ required: true, message: '请输入商品重量', trigger: 'blur' }],
+        goods_number: [{ required: true, message: '请输入商品数量', trigger: 'blur' }],
+        goods_cat: [{ required: true, message: '请选择商品分类', trigger: 'blur' }]
       },
       // 商品列表
       catelist: [],
@@ -185,29 +175,22 @@ export default {
       // console.log(this.activeIndex)
       // 证明访问的是动态参数的面板
       if (this.activeIndex === '1') {
-        const { data: res } = await this.$http.get(
-          `categories/${this.cateId}/attributes`,
-          {
-            params: { sel: 'many' }
-          }
-        )
+        const { data: res } = await this.$http.get(`categories/${this.cateId}/attributes`, {
+          params: { sel: 'many' }
+        })
 
         if (res.meta.status !== 200) {
           return this.$msg.error('获取动态参数失败')
         }
         // console.log(res.data)
         res.data.forEach(item => {
-          item.attr_vals =
-            item.attr_vals.length === 0 ? [] : item.attr_vals.split(' ')
+          item.attr_vals = item.attr_vals.length === 0 ? [] : item.attr_vals.split(' ')
         })
         this.manyTableData = res.data
       } else if (this.activeIndex === '2') {
-        const { data: res } = await this.$http.get(
-          `categories/${this.cateId}/attributes`,
-          {
-            params: { sel: 'only' }
-          }
-        )
+        const { data: res } = await this.$http.get(`categories/${this.cateId}/attributes`, {
+          params: { sel: 'only' }
+        })
         if (res.meta.status !== 200) {
           return this.$msg.error('获取静态参数失败')
         }
@@ -284,7 +267,7 @@ export default {
   computed: {
     // 当前选中的三级分类的Id
     cateId() {
-      if (this.addForm.goods_cat.length == 3) {
+      if (this.addForm.goods_cat.length === 3) {
         return this.addForm.goods_cat[2]
       }
       return null
