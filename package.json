@@ -13,7 +13,7 @@
     "echarts": "^4.3.0",
     "element-ui": "2.4.5",
     "lodash": "^4.17.15",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "nprogress": "^0.2.0",
     "vue": "^2.6.10",
     "vue-quill-editor": "^3.0.6",
